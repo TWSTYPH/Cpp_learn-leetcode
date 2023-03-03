@@ -132,3 +132,39 @@ public:
 };
 ```
 
+# 3.3、移除数组元素
+
+给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。
+
+不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并**原地**修改输入数组。
+
+已知数组的元素在内存地址中是连续的，不能单独删除，只能覆盖
+
+常规解题方法：需要对其进行有两层的for循环时间复杂度过高
+
+**双指针法**（数组、链表、字符串）应用广泛
+
+通过一个快指针和一个慢指针在一个for循环下完成两个循环的任务
+
+快指针：寻找新数组的元素，新数组即为不含有目标元素的数组
+
+慢指针：执行更新 指向新数组下标
+
+```c++
+class Solution{
+public:
+    int removeElement(vector<int>& nums,int val){
+        int slowIndex = 0;
+        for (int firstIndex = 0; firstIndex <nums.size(); firstIndex++){
+            if (nums[firstIndex] != val){
+                nums[slowIndex++] = nums[firstIndex];
+
+            }
+        }
+        return slowIndex;
+
+    }
+
+};
+```
+
